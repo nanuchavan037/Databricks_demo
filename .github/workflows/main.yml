@@ -1,0 +1,39 @@
+name: Deploy to QA
+
+on:
+  push:
+    branches:
+      - main  # Set the branch you want to trigger the workflow for
+  pull_request:
+    branches:
+      - main
+ 
+
+jobs:
+  deploy:
+    name: "Deploy bundle"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+      
+      - run: databricks bundle deploy
+ 
+
+  pipeline_update:
+    name: "Run jobs "
+    runs-on: self-hosted
+
+    needs:
+      - deploy
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+
+      - shell: bash
+        name: Run jobs
+        run: databricks bundle run wheel-job
