@@ -40,5 +40,5 @@ jobs:
       - shell: bash
         name: Run jobs
         run: databricks bundle run wheel-job
-         env:
+        env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
