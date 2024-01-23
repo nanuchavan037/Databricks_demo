@@ -1,0 +1,27 @@
+experimental:
+  python_wheel_wrapper: true
+
+bundle:
+  name: azure_rest
+
+resources:
+  jobs:
+    wheel-job:
+      name: wheel-job
+      tasks:
+        - task_key: notebook_task
+          existing_cluster_id: 0119-105930-ogx3rj3f
+          depends_on:
+            - task_key: wheel-task
+          notebook_task:
+            notebook_path: /Users/bidaveanirudha@gmail.com/.bundle/azure_rest/default/files/src/notebook
+        - task_key: wheel-task
+          existing_cluster_id: 0119-105930-ogx3rj3f
+          python_wheel_task:
+            entry_point: main
+            package_name: azure_rest
+          libraries:
+            - whl: /Workspace/Users/bidaveanirudha@gmail.com/.bundle/azure_rest/default/files/dist/azure_rest-0.0.1-py3-none-any.whl
+
+  workspace:
+  host: https://adb-4634887628719575.15.azuredatabricks.net

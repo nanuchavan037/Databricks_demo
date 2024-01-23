@@ -1,0 +1,13 @@
+LICENCE
+setup.py
+src/azure_rest/__init__.py
+src/azure_rest/cost.py
+src/azure_rest/main.py
+src/azure_rest/metrics.py
+src/azure_rest/token.py
+src/azure_rest.egg-info/PKG-INFO
+src/azure_rest.egg-info/SOURCES.txt
+src/azure_rest.egg-info/dependency_links.txt
+src/azure_rest.egg-info/entry_points.txt
+src/azure_rest.egg-info/requires.txt
+src/azure_rest.egg-info/top_level.txt
