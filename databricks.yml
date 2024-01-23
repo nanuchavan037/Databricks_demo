@@ -1,5 +1,3 @@
-experimental:
-  python_wheel_wrapper: true
 
 
 bundle:
@@ -9,20 +7,46 @@ resources:
   jobs:
     wheel-job:
       name: wheel-job
+
+      # schedule:
+      #   # Run every day at 8:37 AM
+      #   quartz_cron_expression: '44 37 8 * * ?'
+      #   timezone_id: Europe/Amsterdam
+
+      email_notifications:
+        on_failure:
+          - bidaveanirudha@gmail.com
+   
       tasks:
+
         - task_key: notebook_task
+          # job_cluster_key: common-cluster
           existing_cluster_id: 0119-105930-ogx3rj3f
           depends_on:
             - task_key: wheel-task
           notebook_task:
             notebook_path: /Users/bidaveanirudha@gmail.com/.bundle/azure_rest/default/files/src/notebook
+
+
         - task_key: wheel-task
+          # job_cluster_key: common-cluster
           existing_cluster_id: 0119-105930-ogx3rj3f
           python_wheel_task:
             entry_point: main
             package_name: azure_rest
           libraries:
-            - whl: /Workspace/Users/bidaveanirudha@gmail.com/.bundle/azure_rest/default/files/dist/azure_rest-0.0.1-py3-none-any.whl
+            - whl: /Workspace/Users/bidaveanirudha@gmail.com/.bundle/azure_rest/dev/files/dist/azure_rest-0.0.1-py3-none-any.whl
+          
+      # job_clusters:
+      #   - job_cluster_key: common-cluster
+      #     new_cluster:
+      #       spark_version: 13.3.x-scala2.12
+      #       node_type_id: e2-highmem-2
+      #       autoscale:
+      #        min_workers: 1
+      #        max_workers: 2
 
-  workspace:
-  host: https://adb-4634887628719575.15.azuredatabricks.net
+targets:
+  dev:
+    workspace:
+    host: https://adb-4634887628719575.15.azuredatabricks.net
