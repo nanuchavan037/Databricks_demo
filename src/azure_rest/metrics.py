@@ -15,7 +15,7 @@ def res_metrics(access_token, scope, resource_info, metricNames, hours=None, day
         resource_info (list): list resoure info [resourceProviderNamespace, resourceType, resourceName]
         metricName (string): type of metrics data (Transactions / Ingress / Egress)
         hours (int)(optional): number of hours (optional if days are provided)
-        days (int): number of days (optional if hours are provided)
+        days (int)(optional): number of days (optional if hours are provided)
 
     Returns:
         It will return resource metrics with passed parameters in json format
