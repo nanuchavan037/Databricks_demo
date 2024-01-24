@@ -13,9 +13,9 @@ resources:
       #   quartz_cron_expression: '44 37 8 * * ?'
       #   timezone_id: Europe/Amsterdam
 
-      email_notifications:
-        on_failure:
-          - bidaveanirudha@gmail.com
+      # email_notifications:
+      #   on_failure:
+      #     - bidaveanirudha@gmail.com
    
       tasks:
 
@@ -50,6 +50,7 @@ targets:
   staging:
     workspace:
     host: https://adb-4634887628719575.15.azuredatabricks.net
+    
   prod:
     workspace:
       host: https://adb-4634887628719575.15.azuredatabricks.net
