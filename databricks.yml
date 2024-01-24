@@ -50,6 +50,7 @@ targets:
   staging:
     workspace:
     host: https://adb-4634887628719575.15.azuredatabricks.net
+    
   prod:
     workspace:
       host: https://adb-4634887628719575.15.azuredatabricks.net
