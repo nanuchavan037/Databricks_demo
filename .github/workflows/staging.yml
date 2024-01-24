@@ -39,6 +39,6 @@ jobs:
 
       - shell: bash
         name: Run jobs
-        run: databricks bundle run wheel-job
+        run: databricks bundle run wheel-job -t staging
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
