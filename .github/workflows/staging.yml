@@ -1,4 +1,4 @@
-name: Deploy to QA
+name: Deploy to staging
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
 
       - uses: databricks/setup-cli@main
       
-      - run: databricks bundle deploy
+      - run: databricks bundle deploy -t staging
         
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
