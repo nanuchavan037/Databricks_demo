@@ -1,0 +1,48 @@
+name: Deploy to QA
+
+concurrency: 1
+
+on:
+  push:
+    branches:
+      - staging # Set the branch you want to trigger the workflow for
+  pull_request:
+    branches:
+      - staging
+ 
+
+jobs:
+  deploy:
+    name: "Deploy bundle"
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+      
+      - run: databricks bundle deploy 
+        
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: QA
+          
+
+  pipeline_update:
+    name: "Run jobs "
+    runs-on: self-hosted
+
+    needs:
+      - deploy
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+
+      - shell: bash
+        name: Run jobs
+        run: databricks bundle run wheel-job 
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: QA
