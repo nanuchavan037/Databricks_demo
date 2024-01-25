@@ -1,4 +1,6 @@
-name: Deploy to staging
+name: Deploy to QA
+
+concurrency: 1
 
 on:
   push:
@@ -19,10 +21,11 @@ jobs:
 
       - uses: databricks/setup-cli@main
       
-      - run: databricks bundle deploy -t staging
+      - run: databricks bundle deploy 
         
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: QA
           
 
   pipeline_update:
@@ -39,6 +42,7 @@ jobs:
 
       - shell: bash
         name: Run jobs
-        run: databricks bundle run wheel-job -t staging
+        run: databricks bundle run wheel-job 
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: QA
