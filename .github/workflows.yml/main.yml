@@ -27,7 +27,7 @@ jobs:
       
 
       - run: databricks bundle deploy 
-      - run: databricks bundle deploy 
+      
 
         
         env:
@@ -52,7 +52,7 @@ jobs:
 
         run: databricks bundle run  wheel-job 
         
-        run: databricks bundle run wheel-job 
+        
 
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
