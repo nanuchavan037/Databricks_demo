@@ -1,6 +1,10 @@
+<<<<<<< HEAD:.github/workflows.yml/main.yml
 name: Deploy to QA
 
 concurrency: 1
+=======
+name: Deploy to stagin
+>>>>>>> 0cd8488ef353462c846451a325ba1b9feaf58caf:.github/workflows/staging.yml
 
 on:
   push:
@@ -21,7 +25,11 @@ jobs:
 
       - uses: databricks/setup-cli@main
       
+<<<<<<< HEAD:.github/workflows.yml/main.yml
       - run: databricks bundle deploy -t QA
+=======
+      - run: databricks bundle deploy 
+>>>>>>> 0cd8488ef353462c846451a325ba1b9feaf58caf:.github/workflows/staging.yml
         
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -42,7 +50,11 @@ jobs:
 
       - shell: bash
         name: Run jobs
+<<<<<<< HEAD:.github/workflows.yml/main.yml
         run: databricks bundle run -t QA wheel-job 
+=======
+        run: databricks bundle run wheel-job 
+>>>>>>> 0cd8488ef353462c846451a325ba1b9feaf58caf:.github/workflows/staging.yml
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
          
