@@ -13,12 +13,11 @@ resources:
       #   quartz_cron_expression: '44 37 8 * * ?'
       #   timezone_id: Europe/Amsterdam
 
-      # email_notifications:
-      #   on_failure:
-      #     - bidaveanirudha@gmail.com
+      email_notifications:
+        on_failure:
+          - bidaveanirudha@gmail.com
    
       tasks:
-
         - task_key: notebook_task
           # job_cluster_key: common-cluster
           existing_cluster_id: 0119-105930-ogx3rj3f
