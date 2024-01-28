@@ -3,10 +3,10 @@ name: Deploy to stagin
 on:
   push:
     branches:
-      - staging # Set the branch you want to trigger the workflow for
+      - main # Set the branch you want to trigger the workflow for
   pull_request:
     branches:
-      - staging
+      - main
  
 
 jobs:
