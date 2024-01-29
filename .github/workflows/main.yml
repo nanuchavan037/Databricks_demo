@@ -22,7 +22,7 @@ jobs:
 
       - uses: databricks/setup-cli@main 
 
-      - run: databricks bundle deploy 
+      - run: databricks bundle deploy -t QA
       
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
