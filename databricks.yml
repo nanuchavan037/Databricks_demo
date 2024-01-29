@@ -56,6 +56,4 @@ targets:
     worspace:
     host:  https://adb-4634887628719575.15.azuredatabricks.net
     
-    QA: 
-  workspace:
-    host: https://adb-4634887628719575.15.azuredatabricks.net
+    
